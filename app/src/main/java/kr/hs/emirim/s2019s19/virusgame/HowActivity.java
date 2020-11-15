@@ -36,8 +36,6 @@ public class HowActivity extends AppCompatActivity {
             public void onClick(View v) {
                 //동작 설정
                 switch (v.getId()) {
-                    case R.id.button1:
-                        break;
                     case R.id.playbtn:
                         Intent intent = new Intent(getApplicationContext(), GameActivity.class);
                         startActivity(intent);
