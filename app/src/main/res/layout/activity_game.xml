@@ -157,7 +157,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_marginTop="20dp"
-            android:visibility="invisible">
+            android:visibility="visible">
             <ImageView
                 android:layout_width="350dp"
                 android:layout_height="350dp"
@@ -172,9 +172,9 @@
                 android:layout_gravity="center_horizontal|bottom"
                 android:layout_marginLeft="-312dp"
                 android:layout_marginBottom="20dp"
-                android:hint=""
+                android:hint="ajjvjvjv"
                 android:background="@drawable/answer_input"
-                android:paddingLeft="230px" />
+                android:paddingLeft="260px" />
             <Button
                 android:id="@+id/ab1"
                 android:layout_width="50dp"

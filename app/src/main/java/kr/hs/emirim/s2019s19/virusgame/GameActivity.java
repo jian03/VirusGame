@@ -3,6 +3,7 @@ package kr.hs.emirim.s2019s19.virusgame;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
@@ -37,9 +38,9 @@ public class GameActivity extends AppCompatActivity {
     private int media_pos;
     private static MediaPlayer mp;
     ImageButton btnpause, btnsoundon, btnclose, btngo, btnrefresh, btnhome;
-    LinearLayout q1, q2, q3, q4, q5, q6, q7, q8, q9, q10, q11, q12, q13, q14, q15, q16, q17, q18, q19, q20, lineargameover;
+    LinearLayout q1, q2, q3, q4, q5, q6, q7, q8, q9, q10, q11, q12, q13, q14, q15, q16, q17, q18, q19, q20, lineargameover, lineargameclear;
     EditText ae1, ae2, ae3, ae4, ae5, ae6, ae7, ae8, ae9, ae10, ae11, ae12, ae13, ae14, ae15, ae16, ae17, ae18, ae19, ae20;
-    Button ab1, ab2, ab3, ab4, ab5, ab6, ab7, ab8, ab9, ab10, ab11, ab12, ab13, ab14, ab15, ab16, ab17, ab18, ab19, ab20, overbtnhome, overbtnrefresh, btnhint;
+    Button ab1, ab2, ab3, ab4, ab5, ab6, ab7, ab8, ab9, ab10, ab11, ab12, ab13, ab14, ab15, ab16, ab17, ab18, ab19, ab20, overbtnhome, overbtnrefresh, clearbtnhome, clearbtnrefresh, btnhint;
     ImageView v1, v2, v3, v4, v5, v6, v7, v8, v9, v10;
     TimerThread thread;
     MyThread thread2;
@@ -87,6 +88,8 @@ public class GameActivity extends AppCompatActivity {
         startcountdown = findViewById(R.id.count3);
         overbtnhome = lineargameover.findViewById(R.id.overbtnhome);
         overbtnrefresh = lineargameover.findViewById(R.id.overbtnrefresh);
+        clearbtnhome = lineargameclear.findViewById(R.id.clearbtnhome);
+        clearbtnrefresh = lineargameclear.findViewById(R.id.clearbtnrefresh);
         finalscore = lineargameover.findViewById(R.id.finalscore);
         hinttext = findViewById(R.id.hint_text);
 
@@ -168,6 +171,25 @@ public class GameActivity extends AppCompatActivity {
                 finish(); //현재 Acticity 종료
             }
         });
+
+        clearbtnhome.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                mp.release();
+                Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        clearbtnrefresh.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getApplicationContext(), GameActivity.class);
+                startActivity(intent);
+                finish(); //현재 Acticity 종료
+            }
+        });
+
         btnhint.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -1515,6 +1537,7 @@ public class GameActivity extends AppCompatActivity {
     };
 
     Handler handler = new Handler(){
+        @SuppressLint("HandlerLeak")
         @Override
         public void handleMessage(Message msg){ // 100초
             if(msg.what == 1){
@@ -1542,7 +1565,11 @@ public class GameActivity extends AppCompatActivity {
                 mInputMethodManager.hideSoftInputFromWindow(ae19.getWindowToken(), 0); // 키보드 내리기
                 mInputMethodManager.hideSoftInputFromWindow(ae20.getWindowToken(), 0); // 키보드 내리기
                 finalscore.setText("SCORE : " + String.valueOf(score));
-                lineargameover.setVisibility(View.VISIBLE);
+                if(score >= 150) {
+                    lineargameclear.setVisibility(View.VISIBLE);
+                } else {
+                    lineargameover.setVisibility(View.VISIBLE);
+                }
             }
         }
     };
