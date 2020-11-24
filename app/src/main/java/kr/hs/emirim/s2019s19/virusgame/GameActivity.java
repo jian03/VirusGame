@@ -3,7 +3,6 @@ package kr.hs.emirim.s2019s19.virusgame;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
@@ -27,26 +26,33 @@ import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
-
+import java.util.Random;
 import java.util.Timer;
 import java.util.TimerTask;
 
 public class GameActivity extends AppCompatActivity {
-    TextView count, finalscore;
+    TextView count, finalscore, finalscore2;
     TextView startcountdown, hinttext;
     private int btncount2 = 0, score = 0, hintcount = 0;
     private int media_pos;
     private static MediaPlayer mp;
     ImageButton btnpause, btnsoundon, btnclose, btngo, btnrefresh, btnhome;
-    //LinearLayout q1, q2, q3, q4, q5, q6, q7, q8, q9, q10, q11, q12, q13, q14, q15, q16, q17, q18, q19, q20
-    LinearLayout lineargameover, lineargameclear;
-    public static final int imgRandom[]= {R.id.q1, R.id.q2, R.id.q3, R.id.q4, R.id.q5, R.id.q6, R.id.q7, R.id.q8, R.id.q9, R.id.q10, R.id.q11};
-    EditText ae1, ae2, ae3, ae4, ae5, ae6, ae7, ae8, ae9, ae10, ae11, ae12, ae13, ae14, ae15, ae16, ae17, ae18, ae19, ae20;
-    Button ab1, ab2, ab3, ab4, ab5, ab6, ab7, ab8, ab9, ab10, ab11, ab12, ab13, ab14, ab15, ab16, ab17, ab18, ab19, ab20, overbtnhome, overbtnrefresh, clearbtnhome, clearbtnrefresh, btnhint;
+    LinearLayout q1, q2, q3, q4, q5, q6, q7, q8, q9, q10, q11, q12, q13, q14, q15, q16, q17, q18, q19,
+                q20, q21, q22, q23, q24, q25, q26, q27, q28, q29, q30, lineargameover, lineargameclear;
+    public static final int imgRandom[]= {R.id.q1, R.id.q2, R.id.q3, R.id.q4, R.id.q5, R.id.q6, R.id.q7, R.id.q8, R.id.q9, R.id.q10,
+            R.id.q11, R.id.q12, R.id.q13, R.id.q14, R.id.q15, R.id.q16, R.id.q17, R.id.q18, R.id.q19, R.id.q20,
+            R.id.q21, R.id.q22, R.id.q23, R.id.q24, R.id.q25, R.id.q26, R.id.q27, R.id.q28, R.id.q29, R.id.q30};
+    EditText ae1, ae2, ae3, ae4, ae5, ae6, ae7, ae8, ae9, ae10, ae11, ae12, ae13, ae14, ae15,
+            ae16, ae17, ae18, ae19, ae20, ae21, ae22, ae23, ae24, ae25, ae26, ae27, ae28, ae29, ae30;
+    Button ab1, ab2, ab3, ab4, ab5, ab6, ab7, ab8, ab9, ab10, ab11, ab12, ab13, ab14, ab15, ab16, ab17, ab18, ab19, ab20,
+            ab21, ab22, ab23, ab24, ab25, ab26, ab27, ab28, ab29, ab30, overbtnhome, overbtnrefresh, clearbtnhome, clearbtnrefresh, btnhint;
     ImageView v1, v2, v3, v4, v5, v6, v7, v8, v9, v10;
     TimerThread thread;
     MyThread thread2;
     InputMethodManager mInputMethodManager;
+    int[] img = {R.id.q1,R.id.q2,R.id.q3,R.id.q4,R.id.q5,R.id.q6,R.id.q7,R.id.q8,R.id.q9,R.id.q10,R.id.q11,R.id.q12, R.id.q13,R.id.q14,R.id.q15,
+            R.id.q16,R.id.q17,R.id.q18,R.id.q19,R.id.q20, R.id.q21,R.id.q22,R.id.q23,R.id.q24,R.id.q25,R.id.q26,R.id.q27,R.id.q28,R.id.q29,R.id.q30};
+    int randomImage = img[new Random().nextInt(img.length)];
 
     boolean loopFlag = true;
     boolean isFirst = true;
@@ -61,8 +67,7 @@ public class GameActivity extends AppCompatActivity {
         LayoutInflater inflater = (LayoutInflater)getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         final LinearLayout linear = (LinearLayout)inflater.inflate(R.layout.activity_countdown, null);
         lineargameover = (LinearLayout)inflater.inflate(R.layout.activity_gameover, null);
-        /*final LinearLayout linearnotanswer = (LinearLayout)inflater.inflate(R.layout.activity_notanswer, null);
-        final LinearLayout linearrightanswer = (LinearLayout)inflater.inflate(R.layout.activity_rightanswer, null);*/
+        lineargameclear = (LinearLayout)inflater.inflate(R.layout.activity_gameclear, null);
         final LinearLayout.LayoutParams paramlinear = new LinearLayout.LayoutParams(
                 LinearLayout.LayoutParams.MATCH_PARENT,
                 LinearLayout.LayoutParams.MATCH_PARENT
@@ -73,7 +78,7 @@ public class GameActivity extends AppCompatActivity {
         );
         linear.setBackgroundColor(Color.parseColor("#99000000")); // 배경 불투명도 설정
         lineargameover.setBackgroundColor(Color.parseColor("#99000000"));
-        //linearrightanswer.setBackgroundColor(Color.parseColor("#00000000"));
+        lineargameclear.setBackgroundColor(Color.parseColor("#99000000"));
         addContentView(linear, paramlinear);
         View view = (View)getLayoutInflater().inflate(R.layout.activity_pause, null);
         final FrameLayout frame = view.findViewById(R.id.frame);
@@ -93,23 +98,56 @@ public class GameActivity extends AppCompatActivity {
         clearbtnhome = lineargameclear.findViewById(R.id.clearbtnhome);
         clearbtnrefresh = lineargameclear.findViewById(R.id.clearbtnrefresh);
         finalscore = lineargameover.findViewById(R.id.finalscore);
+        finalscore2 = lineargameclear.findViewById(R.id.finalscore2);
         hinttext = findViewById(R.id.hint_text);
 
         ae1 = findViewById(R.id.ae1); // answer editText
-        ae2 = findViewById(R.id.ae2);ae3 = findViewById(R.id.ae3);ae4 = findViewById(R.id.ae4);ae5 = findViewById(R.id.ae5);ae6 = findViewById(R.id.ae6);ae7 = findViewById(R.id.ae7);ae8 = findViewById(R.id.ae8);ae9 = findViewById(R.id.ae9);ae10 = findViewById(R.id.ae10);ae11 = findViewById(R.id.ae11);//ae12 = findViewById(R.id.ae12);ae13 = findViewById(R.id.ae13);ae14 = findViewById(R.id.ae14);ae15 = findViewById(R.id.ae15);ae16 = findViewById(R.id.ae16);ae17 = findViewById(R.id.ae17);ae18 = findViewById(R.id.ae18);ae19 = findViewById(R.id.ae19);ae20 = findViewById(R.id.ae20);
+        ae2 = findViewById(R.id.ae2); ae3 = findViewById(R.id.ae3); ae4 = findViewById(R.id.ae4);
+        ae5 = findViewById(R.id.ae5); ae6 = findViewById(R.id.ae6); ae7 = findViewById(R.id.ae7);
+        ae8 = findViewById(R.id.ae8); ae9 = findViewById(R.id.ae9); ae10 = findViewById(R.id.ae10);
+        ae11 = findViewById(R.id.ae11); ae12 = findViewById(R.id.ae12); ae13 = findViewById(R.id.ae13);
+        ae14 = findViewById(R.id.ae14); ae15 = findViewById(R.id.ae15); ae16 = findViewById(R.id.ae16);
+        ae17 = findViewById(R.id.ae17); ae18 = findViewById(R.id.ae18); ae19 = findViewById(R.id.ae19);
+        ae20 = findViewById(R.id.ae20); ae21 = findViewById(R.id.ae21); ae22 = findViewById(R.id.ae22);
+        ae23 = findViewById(R.id.ae23); ae24 = findViewById(R.id.ae24); ae25 = findViewById(R.id.ae25);
+        ae26 = findViewById(R.id.ae26); ae27 = findViewById(R.id.ae27); ae28 = findViewById(R.id.ae28);
+        ae29 = findViewById(R.id.ae29); ae30 = findViewById(R.id.ae30);
+
         ab1 = findViewById(R.id.ab1); // answer button
-        ab2 = findViewById(R.id.ab2);ab3 = findViewById(R.id.ab3);ab4 = findViewById(R.id.ab4);ab5 = findViewById(R.id.ab5);ab6 = findViewById(R.id.ab6);ab7 = findViewById(R.id.ab7);ab8 = findViewById(R.id.ab8);ab9 = findViewById(R.id.ab9);ab10 = findViewById(R.id.ab10);ab11 = findViewById(R.id.ab11);//ab12 = findViewById(R.id.ab12);ab13 = findViewById(R.id.ab13);ab14 = findViewById(R.id.ab14);ab15 = findViewById(R.id.ab15);ab16 = findViewById(R.id.ab16);ab17 = findViewById(R.id.ab17);ab18 = findViewById(R.id.ab18);ab19 = findViewById(R.id.ab19);ab20 = findViewById(R.id.ab20);
+        ab2 = findViewById(R.id.ab2); ab3 = findViewById(R.id.ab3); ab4 = findViewById(R.id.ab4);
+        ab5 = findViewById(R.id.ab5); ab6 = findViewById(R.id.ab6); ab7 = findViewById(R.id.ab7);
+        ab8 = findViewById(R.id.ab8); ab9 = findViewById(R.id.ab9); ab10 = findViewById(R.id.ab10);
+        ab11 = findViewById(R.id.ab11); ab12 = findViewById(R.id.ab12); ab13 = findViewById(R.id.ab13);
+        ab14 = findViewById(R.id.ab14); ab15 = findViewById(R.id.ab15); ab16 = findViewById(R.id.ab16);
+        ab17 = findViewById(R.id.ab17); ab18 = findViewById(R.id.ab18); ab19 = findViewById(R.id.ab19);
+        ab20 = findViewById(R.id.ab20); ab21 = findViewById(R.id.ab21); ab22 = findViewById(R.id.ab22);
+        ab23 = findViewById(R.id.ab23); ab24 = findViewById(R.id.ab24); ab25 = findViewById(R.id.ab25);
+        ab26 = findViewById(R.id.ab26); ab27 = findViewById(R.id.ab27); ab28 = findViewById(R.id.ab28);
+        ab29 = findViewById(R.id.ab29); ab30 = findViewById(R.id.ab30);
+
+        q1 = findViewById(R.id.q1); // question layout
+        q2 = findViewById(R.id.q2); q3 = findViewById(R.id.q3); q4 = findViewById(R.id.q4);
+        q5 = findViewById(R.id.q5); q6 = findViewById(R.id.q6); q7 = findViewById(R.id.q7);
+        q8 = findViewById(R.id.q8); q9 = findViewById(R.id.q9); q10 = findViewById(R.id.q10);
+        q11 = findViewById(R.id.q11); q12 = findViewById(R.id.q12); q13 = findViewById(R.id.q13);
+        q14 = findViewById(R.id.q14); q15 = findViewById(R.id.q15); q16 = findViewById(R.id.q16);
+        q17 = findViewById(R.id.q17); q18 = findViewById(R.id.q18); q19 = findViewById(R.id.q19);
+        q20 = findViewById(R.id.q20); q21 = findViewById(R.id.q21); q22 = findViewById(R.id.q22);
+        q23 = findViewById(R.id.q23); q24 = findViewById(R.id.q24); q25 = findViewById(R.id.q25);
+        q26 = findViewById(R.id.q26); q27 = findViewById(R.id.q27); q28 = findViewById(R.id.q28);
+        q29 = findViewById(R.id.q29); q30 = findViewById(R.id.q30);
+
         v1 = findViewById(R.id.v1); // virus imageView
-        v2 = findViewById(R.id.v2);v3 = findViewById(R.id.v3);v4 = findViewById(R.id.v4);v5 = findViewById(R.id.v5);v6 = findViewById(R.id.v6);v7 = findViewById(R.id.v7);v8 = findViewById(R.id.v8);v9 = findViewById(R.id.v9);v10 = findViewById(R.id.v10);
+        v2 = findViewById(R.id.v2); v3 = findViewById(R.id.v3); v4 = findViewById(R.id.v4);
+        v5 = findViewById(R.id.v5); v6 = findViewById(R.id.v6); v7 = findViewById(R.id.v7);
+        v8 = findViewById(R.id.v8); v9 = findViewById(R.id.v9); v10 = findViewById(R.id.v10);
 
         addContentView(frame, paramframe);
         frame.setVisibility(View.INVISIBLE);
         addContentView(lineargameover, paramlinear);
         lineargameover.setVisibility(View.INVISIBLE);
-        /*addContentView(linearnotanswer, paramlinear);
-        linearnotanswer.setVisibility(View.INVISIBLE);
-        addContentView(linearrightanswer, paramlinear);
-        linearrightanswer.setVisibility(View.INVISIBLE);*/
+        addContentView(lineargameclear, paramlinear);
+        lineargameclear.setVisibility(View.INVISIBLE);
 
         btnpause.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -171,7 +209,6 @@ public class GameActivity extends AppCompatActivity {
                 finish(); //현재 Acticity 종료
             }
         });
-
         clearbtnhome.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -180,7 +217,6 @@ public class GameActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
-
         clearbtnrefresh.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -189,11 +225,11 @@ public class GameActivity extends AppCompatActivity {
                 finish(); //현재 Acticity 종료
             }
         });
-
         btnhint.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 hintcount++;
+                btnhint.setEnabled(false);
                 if(hintcount > 2) {
                     btnhint.setEnabled(false);
                 } else if(q1.getVisibility() == View.VISIBLE) {
@@ -229,7 +265,7 @@ public class GameActivity extends AppCompatActivity {
                 } else if(q11.getVisibility() == View.VISIBLE) {
                     hinttext.setText("화성");
                     hinttext.setVisibility(View.VISIBLE);
-                } /*else if(q12.getVisibility() == View.VISIBLE) {
+                } else if(q12.getVisibility() == View.VISIBLE) {
                     hinttext.setText("프랑스어");
                     hinttext.setVisibility(View.VISIBLE);
                 } else if(q13.getVisibility() == View.VISIBLE) {
@@ -256,9 +292,41 @@ public class GameActivity extends AppCompatActivity {
                 } else if(q20.getVisibility() == View.VISIBLE) {
                     hinttext.setText("연필");
                     hinttext.setVisibility(View.VISIBLE);
-                }*/
+                } else if(q21.getVisibility() == View.VISIBLE) {
+                    hinttext.setText("노트");
+                    hinttext.setVisibility(View.VISIBLE);
+                } else if(q22.getVisibility() == View.VISIBLE) {
+                    hinttext.setText("나무");
+                    hinttext.setVisibility(View.VISIBLE);
+                } else if(q23.getVisibility() == View.VISIBLE) {
+                    hinttext.setText("마스크");
+                    hinttext.setVisibility(View.VISIBLE);
+                } else if(q24.getVisibility() == View.VISIBLE) {
+                    hinttext.setText("커피");
+                    hinttext.setVisibility(View.VISIBLE);
+                } else if(q25.getVisibility() == View.VISIBLE) {
+                    hinttext.setText("유리");
+                    hinttext.setVisibility(View.VISIBLE);
+                } else if(q26.getVisibility() == View.VISIBLE) {
+                    hinttext.setText("학급");
+                    hinttext.setVisibility(View.VISIBLE);
+                } else if(q27.getVisibility() == View.VISIBLE) {
+                    hinttext.setText("버스");
+                    hinttext.setVisibility(View.VISIBLE);
+                } else if(q28.getVisibility() == View.VISIBLE) {
+                    hinttext.setText("사진");
+                    hinttext.setVisibility(View.VISIBLE);
+                } else if(q29.getVisibility() == View.VISIBLE) {
+                    hinttext.setText("가게");
+                    hinttext.setVisibility(View.VISIBLE);
+                } else if(q30.getVisibility() == View.VISIBLE) {
+                    hinttext.setText("간식");
+                    hinttext.setVisibility(View.VISIBLE);
+                }
             }
         });
+
+
 
         ab1.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -270,6 +338,9 @@ public class GameActivity extends AppCompatActivity {
                     score += 10;
                 } else {
                     v1.setVisibility(View.VISIBLE);
+                }
+                if(hintcount <= 2) {
+                    btnhint.setEnabled(true);
                 }
                 q1.setVisibility(View.INVISIBLE);
                 q2.setVisibility(View.VISIBLE);
@@ -295,6 +366,9 @@ public class GameActivity extends AppCompatActivity {
                             v2.setVisibility(View.VISIBLE);
                         }
                     }
+                }
+                if(hintcount <= 2) {
+                    btnhint.setEnabled(true);
                 }
                 q2.setVisibility(View.INVISIBLE);
                 q3.setVisibility(View.VISIBLE);
@@ -361,6 +435,9 @@ public class GameActivity extends AppCompatActivity {
                         }
                     }
                 }
+                if(hintcount <= 2) {
+                    btnhint.setEnabled(true);
+                }
                 q4.setVisibility(View.INVISIBLE);
                 q5.setVisibility(View.VISIBLE);
             }
@@ -400,6 +477,9 @@ public class GameActivity extends AppCompatActivity {
                             v5.setVisibility(View.VISIBLE);
                         }
                     }
+                }
+                if(hintcount <= 2) {
+                    btnhint.setEnabled(true);
                 }
                 q5.setVisibility(View.INVISIBLE);
                 q6.setVisibility(View.VISIBLE);
@@ -445,6 +525,9 @@ public class GameActivity extends AppCompatActivity {
                             v6.setVisibility(View.VISIBLE);
                         }
                     }
+                }
+                if(hintcount <= 2) {
+                    btnhint.setEnabled(true);
                 }
                 q6.setVisibility(View.INVISIBLE);
                 q7.setVisibility(View.VISIBLE);
@@ -495,6 +578,9 @@ public class GameActivity extends AppCompatActivity {
                             v7.setVisibility(View.VISIBLE);
                         }
                     }
+                }
+                if(hintcount <= 2) {
+                    btnhint.setEnabled(true);
                 }
                 q7.setVisibility(View.INVISIBLE);
                 q8.setVisibility(View.VISIBLE);
@@ -610,6 +696,9 @@ public class GameActivity extends AppCompatActivity {
                             v9.setVisibility(View.VISIBLE);
                         }
                     }
+                }
+                if(hintcount <= 2) {
+                    btnhint.setEnabled(true);
                 }
                 q9.setVisibility(View.INVISIBLE);
                 q10.setVisibility(View.VISIBLE);
@@ -759,6 +848,9 @@ public class GameActivity extends AppCompatActivity {
                         }
                     }
                 }
+                if(hintcount <= 2) {
+                    btnhint.setEnabled(true);
+                }
                 q11.setVisibility(View.INVISIBLE);
                 if(v10.getVisibility() == View.VISIBLE) {
                     isRun = false;
@@ -770,7 +862,7 @@ public class GameActivity extends AppCompatActivity {
                     q12.setVisibility(View.VISIBLE);
                 }
             }
-        }); /*
+        });
         ab12.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -836,6 +928,9 @@ public class GameActivity extends AppCompatActivity {
                             lineargameover.setVisibility(View.VISIBLE);
                         }
                     }
+                }
+                if(hintcount <= 2) {
+                    btnhint.setEnabled(true);
                 }
                 q12.setVisibility(View.INVISIBLE);
                 if(v10.getVisibility() == View.VISIBLE) {
@@ -915,6 +1010,9 @@ public class GameActivity extends AppCompatActivity {
                         }
                     }
                 }
+                if(hintcount <= 2) {
+                    btnhint.setEnabled(true);
+                }
                 q13.setVisibility(View.INVISIBLE);
                 if(v10.getVisibility() == View.VISIBLE) {
                     isRun = false;
@@ -992,6 +1090,9 @@ public class GameActivity extends AppCompatActivity {
                             lineargameover.setVisibility(View.VISIBLE);
                         }
                     }
+                }
+                if(hintcount <= 2) {
+                    btnhint.setEnabled(true);
                 }
                 q14.setVisibility(View.INVISIBLE);
                 if(v10.getVisibility() == View.VISIBLE) {
@@ -1071,6 +1172,9 @@ public class GameActivity extends AppCompatActivity {
                         }
                     }
                 }
+                if(hintcount <= 2) {
+                    btnhint.setEnabled(true);
+                }
                 q15.setVisibility(View.INVISIBLE);
                 if(v10.getVisibility() == View.VISIBLE) {
                     isRun = false;
@@ -1148,6 +1252,9 @@ public class GameActivity extends AppCompatActivity {
                             lineargameover.setVisibility(View.VISIBLE);
                         }
                     }
+                }
+                if(hintcount <= 2) {
+                    btnhint.setEnabled(true);
                 }
                 q16.setVisibility(View.INVISIBLE);
                 if(v10.getVisibility() == View.VISIBLE) {
@@ -1321,7 +1428,7 @@ public class GameActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 mInputMethodManager = (InputMethodManager)getSystemService(Context.INPUT_METHOD_SERVICE);
-                mInputMethodManager.hideSoftInputFromWindow(ae19.getWindowToken(), 0); // 키보드 내리기
+                mInputMethodManager.hideSoftInputFromWindow(ae19.getWindowToken(), 0);
                 hinttext.setVisibility(View.INVISIBLE);
                 if(ae19.getText().toString().equals("program")) {
                     score += 10;
@@ -1383,6 +1490,9 @@ public class GameActivity extends AppCompatActivity {
                         }
                     }
                 }
+                if(hintcount <= 2) {
+                    btnhint.setEnabled(true);
+                }
                 q19.setVisibility(View.INVISIBLE);
                 if(v10.getVisibility() == View.VISIBLE) {
                     isRun = false;
@@ -1422,6 +1532,13 @@ public class GameActivity extends AppCompatActivity {
                     } else if(v1.getVisibility() == View.VISIBLE) {
                         v1.setVisibility(View.INVISIBLE);
                     }
+                    /*if(score == 200) {
+                        isFirst = false;
+                        isRun = false;
+                        mp.stop();
+                        finalscore2.setText("SCORE : " + String.valueOf(score));
+                        lineargameclear.setVisibility(View.VISIBLE);
+                    }*/
                 } else {
                     for(int i=0; i<=1; i++) {
                         if (v1.getVisibility() == View.INVISIBLE) {
@@ -1461,6 +1578,9 @@ public class GameActivity extends AppCompatActivity {
                         }
                     }
                 }
+                if(hintcount <= 2) {
+                    btnhint.setEnabled(true);
+                }
                 q20.setVisibility(View.INVISIBLE);
                 isRun = false;
                 isFirst = false;
@@ -1469,8 +1589,7 @@ public class GameActivity extends AppCompatActivity {
                 finalscore.setText("SCORE : " + String.valueOf(score));
                 lineargameover.setVisibility(View.VISIBLE);
             }
-        }); */
-
+        });
         btnsoundon.setOnClickListener(btnListener);
         frame.setOnTouchListener(new View.OnTouchListener() {
             @Override
@@ -1487,7 +1606,7 @@ public class GameActivity extends AppCompatActivity {
 
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
         getSupportActionBar().hide(); //상단바 숨기기
-        getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_PAN);
+        getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_NOTHING);
         getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON); // 화면 안꺼지게
 
         mp = MediaPlayer.create(this, R.raw.backmusic);
@@ -1509,10 +1628,12 @@ public class GameActivity extends AppCompatActivity {
                 thread2 = new MyThread();
                 thread2.start();
                 mp.start();
+
                 q1.setVisibility(View.VISIBLE);
                 btnhint.setVisibility(View.VISIBLE);
                 btnsoundon.setVisibility(View.VISIBLE);
                 btnpause.setVisibility(View.VISIBLE);
+
             }
         }, 4000); // 4초 뒤에 카운트다운 시작
     }
@@ -1538,7 +1659,6 @@ public class GameActivity extends AppCompatActivity {
     };
 
     Handler handler = new Handler(){
-        @SuppressLint("HandlerLeak")
         @Override
         public void handleMessage(Message msg){ // 100초
             if(msg.what == 1){
@@ -1566,11 +1686,7 @@ public class GameActivity extends AppCompatActivity {
                 mInputMethodManager.hideSoftInputFromWindow(ae19.getWindowToken(), 0); // 키보드 내리기
                 mInputMethodManager.hideSoftInputFromWindow(ae20.getWindowToken(), 0); // 키보드 내리기
                 finalscore.setText("SCORE : " + String.valueOf(score));
-                if(score >= 150) {
-                    lineargameclear.setVisibility(View.VISIBLE);
-                } else {
-                    lineargameover.setVisibility(View.VISIBLE);
-                }
+                lineargameover.setVisibility(View.VISIBLE);
             }
         }
     };
