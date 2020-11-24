@@ -20,6 +20,7 @@
                 android:layout_height="50dp"
                 android:visibility="invisible"
                 android:background="@drawable/hint"
+                android:layout_marginTop="3dp"
                 android:paddingTop="5dp"/>
 
             <TextView
@@ -29,9 +30,8 @@
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="-10dp"
                 android:background="@drawable/hintfield"
-                android:paddingLeft="48dp"
-                android:gravity="center_vertical"
-                android:paddingTop="5dp"
+                android:gravity="center"
+                android:textColor="#000000"
                 android:textSize="16sp"
                 android:visibility="invisible" />
         </LinearLayout>
@@ -72,80 +72,76 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="85dp"
-        android:layout_marginTop="20dp"
+        android:layout_height="50dp"
+        android:orientation="horizontal"
+        android:layout_marginTop="10dp"
         android:gravity="center">
         <ImageView
             android:id="@+id/v1"
-            android:layout_width="60dp"
-            android:layout_height="60dp"
+            android:layout_width="35dp"
+            android:layout_height="35dp"
             android:src="@drawable/red"
-            android:layout_marginRight="15dp"
+            android:layout_marginRight="1dp"
             android:visibility="invisible"/>
         <ImageView
             android:id="@+id/v2"
-            android:layout_width="60dp"
-            android:layout_height="60dp"
+            android:layout_width="35dp"
+            android:layout_height="35dp"
             android:src="@drawable/blue"
-            android:layout_marginRight="15dp"
+            android:layout_marginRight="1dp"
             android:visibility="invisible"/>
         <ImageView
             android:id="@+id/v3"
-            android:layout_width="60dp"
-            android:layout_height="60dp"
+            android:layout_width="35dp"
+            android:layout_height="35dp"
             android:src="@drawable/gray"
-            android:layout_marginRight="15dp"
+            android:layout_marginRight="1dp"
             android:visibility="invisible"/>
         <ImageView
             android:id="@+id/v4"
-            android:layout_width="60dp"
-            android:layout_height="60dp"
+            android:layout_width="35dp"
+            android:layout_height="35dp"
             android:src="@drawable/red"
-            android:layout_marginRight="15dp"
+            android:layout_marginRight="1dp"
             android:visibility="invisible"/>
         <ImageView
             android:id="@+id/v5"
-            android:layout_width="60dp"
-            android:layout_height="60dp"
+            android:layout_width="35dp"
+            android:layout_height="35dp"
             android:src="@drawable/purple"
             android:visibility="invisible"/>
-    </LinearLayout>
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="85dp"
-        android:gravity="center">
         <ImageView
             android:id="@+id/v6"
-            android:layout_width="60dp"
-            android:layout_height="60dp"
-            android:layout_marginRight="15dp"
+            android:layout_width="35dp"
+            android:layout_height="35dp"
+            android:layout_marginRight="1dp"
             android:src="@drawable/gray"
             android:visibility="invisible"/>
         <ImageView
             android:id="@+id/v7"
-            android:layout_width="60dp"
-            android:layout_height="60dp"
-            android:layout_marginRight="15dp"
+            android:layout_width="35dp"
+            android:layout_height="35dp"
+            android:layout_marginRight="1dp"
             android:src="@drawable/green"
             android:visibility="invisible"/>
         <ImageView
             android:id="@+id/v8"
-            android:layout_width="60dp"
-            android:layout_height="60dp"
-            android:layout_marginRight="15dp"
+            android:layout_width="35dp"
+            android:layout_height="35dp"
+            android:layout_marginRight="1dp"
             android:src="@drawable/purple"
             android:visibility="invisible"/>
         <ImageView
             android:id="@+id/v9"
-            android:layout_width="60dp"
-            android:layout_height="60dp"
-            android:layout_marginRight="15dp"
+            android:layout_width="35dp"
+            android:layout_height="35dp"
+            android:layout_marginRight="1dp"
             android:src="@drawable/blue"
             android:visibility="invisible"/>
         <ImageView
             android:id="@+id/v10"
-            android:layout_width="60dp"
-            android:layout_height="60dp"
+            android:layout_width="35dp"
+            android:layout_height="35dp"
             android:src="@drawable/yellow"
             android:visibility="invisible"/>
     </LinearLayout>
@@ -156,12 +152,12 @@
             android:id="@+id/q1"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_marginTop="20dp"
+            android:layout_marginTop="10dp"
             android:visibility="visible">
             <ImageView
+                android:id="@+id/imgq1"
                 android:layout_width="350dp"
-                android:layout_height="350dp"
-                android:layout_marginTop="-40dp"
+                android:layout_height="250dp"
                 android:layout_marginLeft="30dp"
                 android:src="@drawable/q1" />
             <EditText
@@ -169,18 +165,15 @@
                 android:singleLine="true"
                 android:layout_width="230dp"
                 android:layout_height="50dp"
-                android:layout_gravity="center_horizontal|bottom"
+                android:layout_gravity="center"
                 android:layout_marginLeft="-312dp"
-                android:layout_marginBottom="20dp"
-                android:hint="ajjvjvjv"
                 android:background="@drawable/answer_input"
-                android:paddingLeft="260px" />
+                android:paddingLeft="130px" />
             <Button
                 android:id="@+id/ab1"
                 android:layout_width="50dp"
                 android:layout_height="50dp"
-                android:layout_gravity="center_horizontal|bottom"
-                android:layout_marginBottom="21.5dp"
+                android:layout_gravity="center"
                 android:background="@drawable/answer_btn"
                 android:layout_marginLeft="-20dp" />
         </LinearLayout>
@@ -188,12 +181,12 @@
             android:id="@+id/q2"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_marginTop="20dp"
+            android:layout_marginTop="10dp"
             android:visibility="invisible">
             <ImageView
+                android:id="@+id/imgq2"
                 android:layout_width="350dp"
-                android:layout_height="350dp"
-                android:layout_marginTop="-40dp"
+                android:layout_height="250dp"
                 android:layout_marginLeft="30dp"
                 android:src="@drawable/q2" />
             <EditText
@@ -201,17 +194,15 @@
                 android:singleLine="true"
                 android:layout_width="230dp"
                 android:layout_height="50dp"
-                android:layout_gravity="center_horizontal|bottom"
+                android:layout_gravity="center"
                 android:layout_marginLeft="-312dp"
-                android:layout_marginBottom="20dp"
                 android:background="@drawable/answer_input"
                 android:paddingLeft="130px" />
             <Button
                 android:id="@+id/ab2"
                 android:layout_width="50dp"
                 android:layout_height="50dp"
-                android:layout_gravity="center_horizontal|bottom"
-                android:layout_marginBottom="21.5dp"
+                android:layout_gravity="center"
                 android:background="@drawable/answer_btn"
                 android:layout_marginLeft="-20dp" />
         </LinearLayout>
@@ -219,12 +210,12 @@
             android:id="@+id/q3"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_marginTop="20dp"
+            android:layout_marginTop="10dp"
             android:visibility="invisible">
             <ImageView
+                android:id="@+id/imgq3"
                 android:layout_width="350dp"
-                android:layout_height="350dp"
-                android:layout_marginTop="-40dp"
+                android:layout_height="250dp"
                 android:layout_marginLeft="30dp"
                 android:src="@drawable/q3" />
             <EditText
@@ -232,17 +223,15 @@
                 android:singleLine="true"
                 android:layout_width="230dp"
                 android:layout_height="50dp"
-                android:layout_gravity="center_horizontal|bottom"
+                android:layout_gravity="center"
                 android:layout_marginLeft="-312dp"
-                android:layout_marginBottom="20dp"
                 android:background="@drawable/answer_input"
                 android:paddingLeft="130px" />
             <Button
                 android:id="@+id/ab3"
                 android:layout_width="50dp"
                 android:layout_height="50dp"
-                android:layout_gravity="center_horizontal|bottom"
-                android:layout_marginBottom="21.5dp"
+                android:layout_gravity="center"
                 android:background="@drawable/answer_btn"
                 android:layout_marginLeft="-20dp" />
         </LinearLayout>
@@ -250,12 +239,12 @@
             android:id="@+id/q4"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_marginTop="20dp"
+            android:layout_marginTop="10dp"
             android:visibility="invisible">
             <ImageView
+                android:id="@+id/imgq4"
                 android:layout_width="350dp"
-                android:layout_height="350dp"
-                android:layout_marginTop="-40dp"
+                android:layout_height="250dp"
                 android:layout_marginLeft="30dp"
                 android:src="@drawable/q4" />
             <EditText
@@ -263,17 +252,15 @@
                 android:singleLine="true"
                 android:layout_width="230dp"
                 android:layout_height="50dp"
-                android:layout_gravity="center_horizontal|bottom"
+                android:layout_gravity="center"
                 android:layout_marginLeft="-312dp"
-                android:layout_marginBottom="20dp"
                 android:background="@drawable/answer_input"
                 android:paddingLeft="130px" />
             <Button
                 android:id="@+id/ab4"
                 android:layout_width="50dp"
                 android:layout_height="50dp"
-                android:layout_gravity="center_horizontal|bottom"
-                android:layout_marginBottom="21.5dp"
+                android:layout_gravity="center"
                 android:background="@drawable/answer_btn"
                 android:layout_marginLeft="-20dp" />
         </LinearLayout>
@@ -281,12 +268,12 @@
             android:id="@+id/q5"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_marginTop="20dp"
+            android:layout_marginTop="10dp"
             android:visibility="invisible">
             <ImageView
+                android:id="@+id/imgq5"
                 android:layout_width="350dp"
-                android:layout_height="350dp"
-                android:layout_marginTop="-40dp"
+                android:layout_height="250dp"
                 android:layout_marginLeft="30dp"
                 android:src="@drawable/q5" />
             <EditText
@@ -294,17 +281,15 @@
                 android:singleLine="true"
                 android:layout_width="230dp"
                 android:layout_height="50dp"
-                android:layout_gravity="center_horizontal|bottom"
+                android:layout_gravity="center"
                 android:layout_marginLeft="-312dp"
-                android:layout_marginBottom="20dp"
                 android:background="@drawable/answer_input"
                 android:paddingLeft="130px" />
             <Button
                 android:id="@+id/ab5"
                 android:layout_width="50dp"
                 android:layout_height="50dp"
-                android:layout_gravity="center_horizontal|bottom"
-                android:layout_marginBottom="21.5dp"
+                android:layout_gravity="center"
                 android:background="@drawable/answer_btn"
                 android:layout_marginLeft="-20dp" />
         </LinearLayout>
@@ -312,12 +297,12 @@
             android:id="@+id/q6"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_marginTop="20dp"
+            android:layout_marginTop="10dp"
             android:visibility="invisible">
             <ImageView
+                android:id="@+id/imgq6"
                 android:layout_width="350dp"
-                android:layout_height="350dp"
-                android:layout_marginTop="-40dp"
+                android:layout_height="250dp"
                 android:layout_marginLeft="30dp"
                 android:src="@drawable/q6" />
             <EditText
@@ -325,17 +310,15 @@
                 android:singleLine="true"
                 android:layout_width="230dp"
                 android:layout_height="50dp"
-                android:layout_gravity="center_horizontal|bottom"
+                android:layout_gravity="center"
                 android:layout_marginLeft="-312dp"
-                android:layout_marginBottom="20dp"
                 android:background="@drawable/answer_input"
                 android:paddingLeft="130px" />
             <Button
                 android:id="@+id/ab6"
                 android:layout_width="50dp"
                 android:layout_height="50dp"
-                android:layout_gravity="center_horizontal|bottom"
-                android:layout_marginBottom="21.5dp"
+                android:layout_gravity="center"
                 android:background="@drawable/answer_btn"
                 android:layout_marginLeft="-20dp" />
         </LinearLayout>
@@ -343,12 +326,12 @@
             android:id="@+id/q7"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_marginTop="20dp"
+            android:layout_marginTop="10dp"
             android:visibility="invisible">
             <ImageView
+                android:id="@+id/imgq7"
                 android:layout_width="350dp"
-                android:layout_height="350dp"
-                android:layout_marginTop="-40dp"
+                android:layout_height="250dp"
                 android:layout_marginLeft="30dp"
                 android:src="@drawable/q7" />
             <EditText
@@ -356,17 +339,15 @@
                 android:singleLine="true"
                 android:layout_width="230dp"
                 android:layout_height="50dp"
-                android:layout_gravity="center_horizontal|bottom"
+                android:layout_gravity="center"
                 android:layout_marginLeft="-312dp"
-                android:layout_marginBottom="20dp"
                 android:background="@drawable/answer_input"
                 android:paddingLeft="130px" />
             <Button
                 android:id="@+id/ab7"
                 android:layout_width="50dp"
                 android:layout_height="50dp"
-                android:layout_gravity="center_horizontal|bottom"
-                android:layout_marginBottom="21.5dp"
+                android:layout_gravity="center"
                 android:background="@drawable/answer_btn"
                 android:layout_marginLeft="-20dp" />
         </LinearLayout>
@@ -374,12 +355,12 @@
             android:id="@+id/q8"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_marginTop="20dp"
+            android:layout_marginTop="10dp"
             android:visibility="invisible">
             <ImageView
+                android:id="@+id/imgq8"
                 android:layout_width="350dp"
-                android:layout_height="350dp"
-                android:layout_marginTop="-40dp"
+                android:layout_height="250dp"
                 android:layout_marginLeft="30dp"
                 android:src="@drawable/q8" />
             <EditText
@@ -387,17 +368,15 @@
                 android:singleLine="true"
                 android:layout_width="230dp"
                 android:layout_height="50dp"
-                android:layout_gravity="center_horizontal|bottom"
+                android:layout_gravity="center"
                 android:layout_marginLeft="-312dp"
-                android:layout_marginBottom="20dp"
                 android:background="@drawable/answer_input"
                 android:paddingLeft="130px" />
             <Button
                 android:id="@+id/ab8"
                 android:layout_width="50dp"
                 android:layout_height="50dp"
-                android:layout_gravity="center_horizontal|bottom"
-                android:layout_marginBottom="21.5dp"
+                android:layout_gravity="center"
                 android:background="@drawable/answer_btn"
                 android:layout_marginLeft="-20dp" />
         </LinearLayout>
@@ -405,12 +384,12 @@
             android:id="@+id/q9"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_marginTop="20dp"
+            android:layout_marginTop="10dp"
             android:visibility="invisible">
             <ImageView
+                android:id="@+id/imgq9"
                 android:layout_width="350dp"
-                android:layout_height="350dp"
-                android:layout_marginTop="-40dp"
+                android:layout_height="250dp"
                 android:layout_marginLeft="30dp"
                 android:src="@drawable/q9" />
             <EditText
@@ -418,17 +397,15 @@
                 android:singleLine="true"
                 android:layout_width="230dp"
                 android:layout_height="50dp"
-                android:layout_gravity="center_horizontal|bottom"
+                android:layout_gravity="center"
                 android:layout_marginLeft="-312dp"
-                android:layout_marginBottom="20dp"
                 android:background="@drawable/answer_input"
                 android:paddingLeft="130px" />
             <Button
                 android:id="@+id/ab9"
                 android:layout_width="50dp"
                 android:layout_height="50dp"
-                android:layout_gravity="center_horizontal|bottom"
-                android:layout_marginBottom="21.5dp"
+                android:layout_gravity="center"
                 android:background="@drawable/answer_btn"
                 android:layout_marginLeft="-20dp" />
         </LinearLayout>
@@ -436,12 +413,12 @@
             android:id="@+id/q10"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_marginTop="20dp"
+            android:layout_marginTop="10dp"
             android:visibility="invisible">
             <ImageView
+                android:id="@+id/imgq10"
                 android:layout_width="350dp"
-                android:layout_height="350dp"
-                android:layout_marginTop="-28dp"
+                android:layout_height="250dp"
                 android:layout_marginLeft="30dp"
                 android:src="@drawable/q10" />
             <EditText
@@ -449,17 +426,15 @@
                 android:singleLine="true"
                 android:layout_width="230dp"
                 android:layout_height="50dp"
-                android:layout_gravity="center_horizontal|bottom"
+                android:layout_gravity="center"
                 android:layout_marginLeft="-312dp"
-                android:layout_marginBottom="20dp"
                 android:background="@drawable/answer_input"
                 android:paddingLeft="130px" />
             <Button
                 android:id="@+id/ab10"
                 android:layout_width="50dp"
                 android:layout_height="50dp"
-                android:layout_gravity="center_horizontal|bottom"
-                android:layout_marginBottom="21.5dp"
+                android:layout_gravity="center"
                 android:background="@drawable/answer_btn"
                 android:layout_marginLeft="-20dp" />
         </LinearLayout>
@@ -467,12 +442,12 @@
             android:id="@+id/q11"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_marginTop="20dp"
+            android:layout_marginTop="10dp"
             android:visibility="invisible">
             <ImageView
+                android:id="@+id/imgq11"
                 android:layout_width="350dp"
-                android:layout_height="350dp"
-                android:layout_marginTop="-40dp"
+                android:layout_height="250dp"
                 android:layout_marginLeft="30dp"
                 android:src="@drawable/q11" />
             <EditText
@@ -480,299 +455,22 @@
                 android:singleLine="true"
                 android:layout_width="230dp"
                 android:layout_height="50dp"
-                android:layout_gravity="center_horizontal|bottom"
+                android:layout_gravity="center"
                 android:layout_marginLeft="-312dp"
-                android:layout_marginBottom="20dp"
                 android:background="@drawable/answer_input"
                 android:paddingLeft="130px" />
             <Button
                 android:id="@+id/ab11"
                 android:layout_width="50dp"
                 android:layout_height="50dp"
-                android:layout_gravity="center_horizontal|bottom"
-                android:layout_marginBottom="21.5dp"
+                android:layout_gravity="center"
                 android:background="@drawable/answer_btn"
                 android:layout_marginLeft="-20dp" />
         </LinearLayout>
-        <LinearLayout
-            android:id="@+id/q12"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_marginTop="20dp"
-            android:visibility="invisible">
-            <ImageView
-                android:layout_width="350dp"
-                android:layout_height="350dp"
-                android:layout_marginTop="-40dp"
-                android:layout_marginLeft="30dp"
-                android:src="@drawable/q12" />
-            <EditText
-                android:id="@+id/ae12"
-                android:singleLine="true"
-                android:layout_width="230dp"
-                android:layout_height="50dp"
-                android:layout_gravity="center_horizontal|bottom"
-                android:layout_marginLeft="-312dp"
-                android:layout_marginBottom="20dp"
-                android:background="@drawable/answer_input"
-                android:paddingLeft="130px" />
-            <Button
-                android:id="@+id/ab12"
-                android:layout_width="50dp"
-                android:layout_height="50dp"
-                android:layout_gravity="center_horizontal|bottom"
-                android:layout_marginBottom="21.5dp"
-                android:background="@drawable/answer_btn"
-                android:layout_marginLeft="-20dp" />
-        </LinearLayout>
-        <LinearLayout
-            android:id="@+id/q13"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_marginTop="20dp"
-            android:visibility="invisible">
-            <ImageView
-                android:layout_width="350dp"
-                android:layout_height="350dp"
-                android:layout_marginTop="-40dp"
-                android:layout_marginLeft="30dp"
-                android:src="@drawable/q13" />
-            <EditText
-                android:id="@+id/ae13"
-                android:singleLine="true"
-                android:layout_width="230dp"
-                android:layout_height="50dp"
-                android:layout_gravity="center_horizontal|bottom"
-                android:layout_marginLeft="-312dp"
-                android:layout_marginBottom="20dp"
-                android:background="@drawable/answer_input"
-                android:paddingLeft="130px" />
-            <Button
-                android:id="@+id/ab13"
-                android:layout_width="50dp"
-                android:layout_height="50dp"
-                android:layout_gravity="center_horizontal|bottom"
-                android:layout_marginBottom="21.5dp"
-                android:background="@drawable/answer_btn"
-                android:layout_marginLeft="-20dp" />
-        </LinearLayout>
-        <LinearLayout
-            android:id="@+id/q14"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_marginTop="20dp"
-            android:visibility="invisible">
-            <ImageView
-                android:layout_width="350dp"
-                android:layout_height="350dp"
-                android:layout_marginTop="-40dp"
-                android:layout_marginLeft="30dp"
-                android:src="@drawable/q14" />
-            <EditText
-                android:id="@+id/ae14"
-                android:singleLine="true"
-                android:layout_width="230dp"
-                android:layout_height="50dp"
-                android:layout_gravity="center_horizontal|bottom"
-                android:layout_marginLeft="-312dp"
-                android:layout_marginBottom="20dp"
-                android:background="@drawable/answer_input"
-                android:paddingLeft="130px" />
-            <Button
-                android:id="@+id/ab14"
-                android:layout_width="50dp"
-                android:layout_height="50dp"
-                android:layout_gravity="center_horizontal|bottom"
-                android:layout_marginBottom="21.5dp"
-                android:background="@drawable/answer_btn"
-                android:layout_marginLeft="-20dp" />
-        </LinearLayout>
-        <LinearLayout
-            android:id="@+id/q15"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_marginTop="20dp"
-            android:visibility="invisible">
-            <ImageView
-                android:layout_width="350dp"
-                android:layout_height="350dp"
-                android:layout_marginTop="-40dp"
-                android:layout_marginLeft="30dp"
-                android:src="@drawable/q15" />
-            <EditText
-                android:id="@+id/ae15"
-                android:singleLine="true"
-                android:layout_width="230dp"
-                android:layout_height="50dp"
-                android:layout_gravity="center_horizontal|bottom"
-                android:layout_marginLeft="-312dp"
-                android:layout_marginBottom="20dp"
-                android:background="@drawable/answer_input"
-                android:paddingLeft="130px" />
-            <Button
-                android:id="@+id/ab15"
-                android:layout_width="50dp"
-                android:layout_height="50dp"
-                android:layout_gravity="center_horizontal|bottom"
-                android:layout_marginBottom="21.5dp"
-                android:background="@drawable/answer_btn"
-                android:layout_marginLeft="-20dp" />
-        </LinearLayout>
-        <LinearLayout
-            android:id="@+id/q16"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_marginTop="20dp"
-            android:visibility="invisible">
-            <ImageView
-                android:layout_width="350dp"
-                android:layout_height="350dp"
-                android:layout_marginTop="-40dp"
-                android:layout_marginLeft="30dp"
-                android:src="@drawable/q16" />
-            <EditText
-                android:id="@+id/ae16"
-                android:singleLine="true"
-                android:layout_width="230dp"
-                android:layout_height="50dp"
-                android:layout_gravity="center_horizontal|bottom"
-                android:layout_marginLeft="-312dp"
-                android:layout_marginBottom="20dp"
-                android:background="@drawable/answer_input"
-                android:paddingLeft="130px" />
-            <Button
-                android:id="@+id/ab16"
-                android:layout_width="50dp"
-                android:layout_height="50dp"
-                android:layout_gravity="center_horizontal|bottom"
-                android:layout_marginBottom="21.5dp"
-                android:background="@drawable/answer_btn"
-                android:layout_marginLeft="-20dp" />
-        </LinearLayout>
-        <LinearLayout
-            android:id="@+id/q17"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_marginTop="20dp"
-            android:visibility="invisible">
-            <ImageView
-                android:layout_width="350dp"
-                android:layout_height="350dp"
-                android:layout_marginTop="-40dp"
-                android:layout_marginLeft="30dp"
-                android:src="@drawable/q17" />
-            <EditText
-                android:id="@+id/ae17"
-                android:singleLine="true"
-                android:layout_width="230dp"
-                android:layout_height="50dp"
-                android:layout_gravity="center_horizontal|bottom"
-                android:layout_marginLeft="-312dp"
-                android:layout_marginBottom="20dp"
-                android:background="@drawable/answer_input"
-                android:paddingLeft="130px" />
-            <Button
-                android:id="@+id/ab17"
-                android:layout_width="50dp"
-                android:layout_height="50dp"
-                android:layout_gravity="center_horizontal|bottom"
-                android:layout_marginBottom="21.5dp"
-                android:background="@drawable/answer_btn"
-                android:layout_marginLeft="-20dp" />
-        </LinearLayout>
-        <LinearLayout
-            android:id="@+id/q18"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_marginTop="20dp"
-            android:visibility="invisible">
-            <ImageView
-                android:layout_width="350dp"
-                android:layout_height="350dp"
-                android:layout_marginTop="-40dp"
-                android:layout_marginLeft="30dp"
-                android:src="@drawable/q18" />
-            <EditText
-                android:id="@+id/ae18"
-                android:singleLine="true"
-                android:layout_width="230dp"
-                android:layout_height="50dp"
-                android:layout_gravity="center_horizontal|bottom"
-                android:layout_marginLeft="-312dp"
-                android:layout_marginBottom="20dp"
-                android:background="@drawable/answer_input"
-                android:paddingLeft="130px" />
-            <Button
-                android:id="@+id/ab18"
-                android:layout_width="50dp"
-                android:layout_height="50dp"
-                android:layout_gravity="center_horizontal|bottom"
-                android:layout_marginBottom="21.5dp"
-                android:background="@drawable/answer_btn"
-                android:layout_marginLeft="-20dp" />
-        </LinearLayout>
-        <LinearLayout
-            android:id="@+id/q19"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_marginTop="20dp"
-            android:visibility="invisible">
-            <ImageView
-                android:layout_width="350dp"
-                android:layout_height="350dp"
-                android:layout_marginTop="-40dp"
-                android:layout_marginLeft="30dp"
-                android:src="@drawable/q19" />
-            <EditText
-                android:id="@+id/ae19"
-                android:singleLine="true"
-                android:layout_width="230dp"
-                android:layout_height="50dp"
-                android:layout_gravity="center_horizontal|bottom"
-                android:layout_marginLeft="-312dp"
-                android:layout_marginBottom="20dp"
-                android:background="@drawable/answer_input"
-                android:paddingLeft="130px" />
-            <Button
-                android:id="@+id/ab19"
-                android:layout_width="50dp"
-                android:layout_height="50dp"
-                android:layout_gravity="center_horizontal|bottom"
-                android:layout_marginBottom="21.5dp"
-                android:background="@drawable/answer_btn"
-                android:layout_marginLeft="-20dp" />
-        </LinearLayout>
-        <LinearLayout
-            android:id="@+id/q20"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_marginTop="20dp"
-            android:visibility="invisible">
-            <ImageView
-                android:layout_width="350dp"
-                android:layout_height="350dp"
-                android:layout_marginTop="-40dp"
-                android:layout_marginLeft="30dp"
-                android:src="@drawable/q20" />
-            <EditText
-                android:id="@+id/ae20"
-                android:singleLine="true"
-                android:layout_width="230dp"
-                android:layout_height="50dp"
-                android:layout_gravity="center_horizontal|bottom"
-                android:layout_marginLeft="-312dp"
-                android:layout_marginBottom="20dp"
-                android:background="@drawable/answer_input"
-                android:paddingLeft="130px" />
-            <Button
-                android:id="@+id/ab20"
-                android:layout_width="50dp"
-                android:layout_height="50dp"
-                android:layout_gravity="center_horizontal|bottom"
-                android:layout_marginBottom="21.5dp"
-                android:background="@drawable/answer_btn"
-                android:layout_marginLeft="-20dp" />
-        </LinearLayout>
+
+
+
+
     </RelativeLayout>
 
 </LinearLayout>

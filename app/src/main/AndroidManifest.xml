@@ -3,6 +3,7 @@
     package="kr.hs.emirim.s2019s19.virusgame">
 
     <application
+        android:usesCleartextTraffic="true"
         android:allowBackup="true"
         android:background="@drawable/background"
         android:icon="@mipmap/ic_launcher"
@@ -10,10 +11,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".MainActivity" />
-        <activity android:name=".GameActivity" />
         <activity android:name=".HowActivity" />
-        <activity android:name=".CountActivity" />
         <activity
             android:name=".SplashActivity"
             android:screenOrientation="portrait"
@@ -25,6 +23,13 @@
             </intent-filter>
         </activity>
 
+        <activity android:name=".MainActivity" />
+        <activity android:name=".GameActivity"
+            android:windowSoftInputMode="adjustResize">
+
+        </activity>
+
     </application>
+
 
 </manifest>

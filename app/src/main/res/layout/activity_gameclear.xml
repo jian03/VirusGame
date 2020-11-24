@@ -13,7 +13,7 @@
         android:layout_height="wrap_content"
         android:src="@drawable/gameclear"/>
     <TextView
-        android:id="@+id/finalscore"
+        android:id="@+id/finalscore2"
         android:gravity="center"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
