@@ -1,1 +1,1 @@
-#Alpha virus(바이러스 게임)
+Alpha virus(바이러스 게임)
